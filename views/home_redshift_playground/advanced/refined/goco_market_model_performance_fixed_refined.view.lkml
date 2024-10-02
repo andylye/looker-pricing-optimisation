@@ -7,4 +7,9 @@ view: +goco_market_model_performance_fixed {
     sql: ${market_model_prediction} ;;
   }
 
+  measure: total_market_top_5_gross_price_avg {
+    type: sum
+    sql: ${market_top_5_gross_price_avg} ;;
+  }
+
 }
