@@ -1,8 +1,8 @@
-# The name of this view in Looker is "Goco Market Model Performance"
-view: goco_market_model_performance {
+# The name of this view in Looker is "Goco Market Model Performance Fixed"
+view: goco_market_model_performance_fixed {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: public.goco_market_model_performance ;;
+  sql_table_name: public.goco_market_model_performance_fixed ;;
 
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
@@ -61,14 +61,18 @@ view: goco_market_model_performance {
     type: string
     sql: ${TABLE}.quote_transaction_id ;;
   }
+  # Dates and timestamps can be represented in Looker using a dimension group of type: time.
+  # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
-  dimension: quotedatetime {
-    type: number
+  dimension_group: quotedatetime {
+    type: time
+    timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.quotedatetime ;;
   }
 
-  dimension: utc_created {
-    type: number
+  dimension_group: utc_created {
+    type: time
+    timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.utc_created ;;
   }
 
